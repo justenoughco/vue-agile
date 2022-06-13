@@ -199,9 +199,9 @@
 			window.addEventListener('resize', this.getWidth)
 
 			// Mouse and touch events
-			this.$refs.track.addEventListener('touchstart', this.handleMouseDown)
+			this.$refs.track.addEventListener('touchstart', this.handleMouseDown,  {passive: true}) // passive
 			this.$refs.track.addEventListener('touchend', this.handleMouseUp)
-			this.$refs.track.addEventListener('touchmove', this.handleMouseMove)
+			this.$refs.track.addEventListener('touchmove', this.handleMouseMove,  {passive: true})  // passive
 			this.$refs.track.addEventListener('mousedown', this.handleMouseDown)
 			this.$refs.track.addEventListener('mouseup', this.handleMouseUp)
 			this.$refs.track.addEventListener('mousemove', this.handleMouseMove)
@@ -214,13 +214,12 @@
 		beforeDestroy () {
 			window.removeEventListener('resize', this.getWidth)
 
-			this.$refs.track.removeEventListener('touchstart', this.handleMouseDown)
+			this.$refs.track.removeEventListener('touchstart', this.handleMouseDown,  {passive: true})  // passive
 			this.$refs.track.removeEventListener('touchend', this.handleMouseUp)
-			this.$refs.track.removeEventListener('touchmove', this.handleMouseMove)
+			this.$refs.track.removeEventListener('touchmove', this.handleMouseMove,  {passive: true})  // passive
 			this.$refs.track.removeEventListener('mousedown', this.handleMouseDown)
 			this.$refs.track.removeEventListener('mouseup', this.handleMouseUp)
 			this.$refs.track.removeEventListener('mousemove', this.handleMouseMove)
-
 			this.disableAutoPlay()
 		},
 
